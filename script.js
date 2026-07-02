@@ -96,23 +96,103 @@ const readingTracker = [
 //     console.log(readingStatsObject);
 // }
 
-// Attempt 2
-function getReadingStats(tracker) {
-    const readingStatsObject = {}
 
-    readingStatsObject.finished = tracker.filter((philosopher) => {
-        return philosopher.readingStatus === "finished"
-    }).length
-    
-    console.log(readingStatsObject)
+// // Attempt 2
+// let readingStatsObject = {}
+
+// function getTotalPhilosophers(tracker) {
+//     let listLength = tracker.length
+//     readingStatsObject.numberOf = listLength
+// }
+
+// getTotalPhilosophers(readingTracker);
+
+// function getReadingStatsFinished(tracker) {
+//     readingStatsObject.finished = tracker.filter((philosopher) => {
+//         return philosopher.readingStatus === "finished"
+//     }).length
+//     console.log(readingStatsObject);
+// }
+
+// getReadingStatsFinished(readingTracker)
+
+// function getReadingStatsStarted(tracker) {
+//     readingStatsObject.started = ((philosopher) => {
+//         return philosopher.readingStatus === "started"
+//     }).length
+//     console.log(readingStatsObject);
+// }
+
+
+// getReadingStatsStarted(readingTracker)
+
+// function getReadingStatsUnstarted(tracker) {
+//     readingStatsObject.unstarted = ((philosopher) => {
+//         return philosopher.readingStatus === "unstarted"
+//     }).length
+//     console.log(readingStatsObject);
+// }
+
+// getReadingStatsUnstarted(readingTracker)
+
+// console.log("------------------------------------------------------")
+
+// Attempt 3
+let readingStatsObjectTwo = {}
+
+function getTotalPhilosophers(tracker) {
+    let listLength = tracker.length
+    readingStatsObjectTwo.numberOf = listLength
 }
 
-getReadingStats(readingTracker)
+getTotalPhilosophers(readingTracker);
 
+function getReadingStatus(tracker) {
+    let readingStarted = 0
+    let readingUnstarted = 0
+    let readingFinished = 0
 
-    // - Total number of philosophers
-    // - How many you have finished -- THIS STEP IM ON
-    // - How many you are currently reading
-    // - How many are unstarted
+    tracker.forEach(philosopher => {
+        if (philosopher.readingStatus === "started") {
+            let startedTrue = {value: 1}
+            let num = Number(startedTrue.value)
+            readingStarted += num;
+        }
+        else if (philosopher.readingStatus === "unstarted") {
+            let unstartedTrue = { value: 1}
+            let num = Number(unstartedTrue.value)
+            readingUnstarted += num;
+        }
+        else if (philosopher.readingStatus === "finished") {
+            let finishedTrue = { value: 1}
+            let num = Number(finishedTrue.value)
+            readingFinished += num;
+        }
+    });
+    console.log(`Status: Started (${readingStarted}), Unstarted (${readingUnstarted}), Finished (${readingFinished})`);
+}
+
+getReadingStatus(readingTracker);
+
+// function listByStatus(tracker, status) {
+//     tracker.filter((philosopher) => {
+//         return philosopher.readingStatus === status
+//     })
+// }
+
+// listByStatus(readingTracker, "unstarted")
+// listByStatus (readingTracker, "started")
+// listByStatus (readingTracker, "finished")
+
+function listByStatus(tracker, status) {
+    const filteredPhilosopher = tracker.filter((philosopher) => {
+        return philosopher.readingStatus === status
+    })
+    return filteredPhilosopher
+}
+
+console.log(listByStatus(readingTracker, "finished"))
+
+// Write a function called `listByStatus` that takes the array and a status string and returns only the philosophers matching that status
 
 // Create more projects for me using the same ideas, but no hints and no instructions. Let me figure it out myself. Only give me the task. Make these more complex, but still using the same concepts. 
